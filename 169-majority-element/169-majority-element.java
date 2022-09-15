@@ -1,31 +1,31 @@
 class Solution {
-	public int majorityElement(int[] a) {
-		int n = a.length;
-		int res = 0;
-		int count = 1;
-		for (int i = 1; i < n; i++) {
-			if (a[res] == a[i]) {
-				count++;
-
-			} else {
-				count--;
-			}
-			if (count == 0) {
-				res = i;
-				count = 1;
-
-			}
-		}
-
-		count = 0;
-		for (int i = 0; i < n; i++) {
-			if (a[res] == a[i]) {
-				count++;
-			}
-		}
-		if (count <= n / 2) {
-			res = -1;
-		}
-		return a[res];
-	}
+    public int majorityElement(int[] nums) {
+        int candidate = 0;
+        int count  = 1;
+        
+        //First Part is to find candidate 
+        for(int  i  =1; i < nums.length; i++){
+            if(nums[candidate] == nums[i]){
+                count++;
+            }else{
+                count--;
+            }
+            if(count == 0 ){
+                candidate =  i;
+                count =1;
+            }
+        }
+        
+        int res = 0 ;
+        //Second Part iS to verify the candidate
+        for(int i  =0 ; i < nums.length; i++){
+            if(nums[candidate] == nums[i]){
+                res++;
+            }
+        }
+        if(res > nums.length/2){
+            return nums[candidate];
+        }
+        return -1;
+    }
 }
