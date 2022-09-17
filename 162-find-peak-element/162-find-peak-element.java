@@ -4,6 +4,8 @@ class Solution {
         int n = nums.length;
         while(low <= high){
         int mid =(low + high)/2;
+            
+            // condition apply for corner element
          if((mid ==  0  ||  nums[mid] >= nums[mid-1]) && (mid == n-1 || nums[mid] >= nums[mid+1])) {
              return mid;
          }
