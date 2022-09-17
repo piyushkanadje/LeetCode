@@ -1,44 +1,46 @@
 class Solution {
-    public int search(int[] nums, int target) {
     
-    int pivot = nums[0];
-    int n = nums.length;
+    /*n: The pivot always will be in the 0 index.
+if target is greather than pivot we will search from 1 index
+if target is less than pivot we will search from n-1 index. */
+    public int search(int[] nums, int target) { 
     
-    if (target < pivot){
-        int r = n-1;
-        while(true){
-            
-            if (r>=0 && nums[r] == target){
-                return r;
-            }
-            
-            if (r < 0 || nums[r] < target) {
-                return -1;
-            }
-            
-            r--;
-          
-        }
-    }else if (target > pivot){
+       int fix = nums[0];
+       int n = nums.length;
+    
         
-        int l = 1;
-        
-        while(true){
-            
-            if (l <= n-1 && nums[l] == target){
-                return l;
+        if(target <fix){
+            int right = n -1;
+            while(true){
+                if(right >= 0 && target == nums[right]){
+                    return right;
+                }
+                
+                if(right < 0 || nums[right] < target){
+                    return -1;
+                }
+                right -- ;
             }
-            
-            if (l>= n || nums[l] > target){
-                return -1;
-            }
-            
-            l++;
-       
         }
         
+ else if(target > fix){  
+         int left  = 1;
+            
+            while(true){
+            if(left<=n-1  && target == nums[left]){
+                return left;
+            }
+                if(left >= n || target < nums[left]){
+return -1;
+            }
+            left ++; 
+            }
+             
+         }else if(target == fix){
+
+ return  0 ; }
         
-    }else if (target == pivot) return 0;
-    return -1;
+return -1;
     
-}}
+    }
+}
