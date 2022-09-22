@@ -1,16 +1,14 @@
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-    HashMap<Integer, Integer> map = new HashMap<Integer, Integer>(nums.length); 
-    for(int  i = 0; i < nums.length; i++){
-        if(map.containsKey(target- nums[i])){
-            return new int[] {map.get(target -  nums[i]) , i};
-        }else{
-            map.put(nums[i], i);
-        }
-    }
+        HashMap<Integer, Integer> map = new HashMap<>();
         
-          throw new IllegalArgumentException("No Pair found");
+        for(int i = 0; i < nums.length; i++){
+            if(map.containsKey(target - nums[i])){
+                return new int[]{i, map.get(target - nums[i])};
+            }else{
+                map.put(nums[i],i);
+            }
+        }
+        throw new IllegalArgumentException ("Not Found");
     }
 }
-           
-           
