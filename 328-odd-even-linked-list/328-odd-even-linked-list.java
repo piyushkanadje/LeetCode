@@ -45,8 +45,8 @@ class Solution {
             i++;
         }
         
-        evenTail.next = null;     // there should not be any node after even tail
-        oddTail.next  = evenHead;   // join even list after odd
+        evenTail.next = null;     //there should not be any node after                                       even tail
+        oddTail.next  = evenHead; //join even list after odd
         return oddHead;
     
     }
