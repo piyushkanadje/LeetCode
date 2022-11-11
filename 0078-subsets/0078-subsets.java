@@ -1,30 +1,23 @@
 class Solution {
-    public List<List<Integer>> subsets(int[] nums) {
+      public List<List<Integer>> subsets(int[] ns) {
+        List<List<Integer>> acc = new ArrayList<>();
         
-       List<List<Integer>> list = new ArrayList<>();
-       
-       generateSubset(list, new ArrayList<Integer>(),nums,0);
-        
-       return list; 
-        
+        recur(acc, ns, new Stack<>(), 0);
+        return acc;
     }
     
-    
-    public void generateSubset( List<List<Integer>> list, List<Integer> ans , int[] nums, int index){
-  
-        //add current subset in the list
-        
-        list.add(new ArrayList<>(ans));
-        
-        for(int i = index; i < nums.length;i++){
-            
-            ans.add(nums[i]);
-            
-            generateSubset(list, ans, nums, i + 1);
-            
-            ans.remove(ans.size() - 1);
-            
+    private void recur(List<List<Integer>> acc, int [] ns, Stack path, int start){
+        if(ns.length == start){
+            acc.add(new ArrayList<>(path));
+            return;
         }
+            
+        // take ns[start]
+        path.push(ns[start]);
+        recur(acc, ns, path, start + 1);
+        path.pop();
         
+        // dont take ns[start]
+        recur(acc, ns, path, start + 1);
     }
 }
